@@ -27,6 +27,7 @@ class ViewController: UIViewController {
         let a = Int.random(in: numbs)
         let b = Int.random(in: numbs)
         operatorLbl.text = String(operts.randomElement()!)
+        //print("\(operatorLbl.text)")
         if operatorLbl.text == "-" {
             if a >= b {
                 numb2.text = String(b)
@@ -44,13 +45,13 @@ class ViewController: UIViewController {
 
     @IBAction func submitBtnPressed(_ sender: Any) {
         
-        if let value1 = numb1.text, let corval1 = Int(value1) {
+        ogLoop: if let value1 = numb1.text, let corval1 = Int(value1) {
             print("\(corval1) is value 1")
             if let value2 = numb2.text, let corval2 = Int(value2) {
                 print("\(corval2) is value 2")
                 if let valueAnsR = answer.text, let ansR = Int(valueAnsR) {
                     print("\(ansR) is value answer")
-                    if (operatorLbl.text == "+") {
+                    opertLoop: if (operatorLbl.text == "+") {
                         let corrAns = minSum(num1: corval1, num2: corval2) 
                         print("the correct answer is \(corrAns)")
                         ifIncorrect: if (ansR == corrAns) {
@@ -62,27 +63,30 @@ class ViewController: UIViewController {
                             let b = Int.random(in: numbs)
                             print("\(b)")
                             operatorLbl.text = String(operts.randomElement()!)
+                            //print("\(operatorLbl.text)")
                             if operatorLbl.text == "-" {
                                 if a >= b {
                                     numb2.text = String(b)
                                     numb1.text = String(a)
-                                    break ifIncorrect
+                                    break ogLoop
                                 } else {
                                     numb2.text = String(a)
                                     numb1.text = String(b)
-                                    break ifIncorrect
+                                    break ogLoop
                                 }
                             } else {
                                 numb2.text = String(Int.random(in: numbs))
+                                //print("else \(numb2.text)")
                                 numb1.text = String(Int.random(in: numbs))
-                                break ifIncorrect
+                                //print("else \(numb2.text)")
+                                break ogLoop
                             }
                         } else {
                             print("answer is incorrect")
                             answer.layer.borderColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
                         }
                     }
-                    if (operatorLbl.text == "-") {
+                    opertLoop: if (operatorLbl.text == "-") {
                         let corrAns = minDiff(num1: corval1, num2: corval2)
                         print("the correct answer is \(corrAns)")
                         ifIncorrect: if (ansR == corrAns) {
@@ -94,20 +98,23 @@ class ViewController: UIViewController {
                             let b = Int.random(in: numbs)
                             print("\(b)")
                             operatorLbl.text = String(operts.randomElement()!)
+                            //print("\(operatorLbl.text)")
                             if operatorLbl.text == "-" {
                                 if a >= b {
                                     numb2.text = String(b)
                                     numb1.text = String(a)
-                                    break ifIncorrect
+                                    break ogLoop
                                 } else {
                                     numb2.text = String(a)
                                     numb1.text = String(b)
-                                    break ifIncorrect
+                                    break ogLoop
                                 }
                             } else {
                                 numb2.text = String(Int.random(in: numbs))
+                                //print("else \(numb2.text)")
                                 numb1.text = String(Int.random(in: numbs))
-                                break ifIncorrect
+                                //print("else \(numb1.text)")
+                                break ogLoop
                             }
                         } else {
                             print("answer is incorrect")
