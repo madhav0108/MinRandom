@@ -10,7 +10,8 @@ import UIKit
 class ViewController: UIViewController {
     
     let numbs = 0..<40
-    let operts = ["+", "-"]
+    let numbsForX = 0..<12
+    let operts = ["+", "-", "x"]
 
     @IBOutlet weak var numb2: UILabel!
     @IBOutlet weak var operatorLbl: UILabel!
@@ -25,9 +26,15 @@ class ViewController: UIViewController {
         submitBtn.layer.cornerRadius = 10.0
         
         let a = Int.random(in: numbs)
+        //let aForX = Int.random(in: numbsForX)
         let b = Int.random(in: numbs)
+        //let bForX = Int.random(in: numbsForX)
         operatorLbl.text = String(operts.randomElement()!)
         //print("\(operatorLbl.text)")
+        if operatorLbl.text == "+" {
+            numb2.text = String(Int.random(in: numbs))
+            numb1.text = String(Int.random(in: numbs))
+        }
         if operatorLbl.text == "-" {
             if a >= b {
                 numb2.text = String(b)
@@ -36,9 +43,10 @@ class ViewController: UIViewController {
                 numb2.text = String(a)
                 numb1.text = String(b)
             }
-        } else {
-            numb2.text = String(Int.random(in: numbs))
-            numb1.text = String(Int.random(in: numbs))
+        }
+        if operatorLbl.text == "x" {
+            numb2.text = String(Int.random(in: numbsForX))
+            numb1.text = String(Int.random(in: numbsForX))
         }
         // Do any additional setup after loading the view.
     }
@@ -64,6 +72,11 @@ class ViewController: UIViewController {
                             print("\(b)")
                             operatorLbl.text = String(operts.randomElement()!)
                             //print("\(operatorLbl.text)")
+                            if operatorLbl.text == "+" {
+                                numb2.text = String(Int.random(in: numbs))
+                                numb1.text = String(Int.random(in: numbs))
+                                break ogLoop
+                            }
                             if operatorLbl.text == "-" {
                                 if a >= b {
                                     numb2.text = String(b)
@@ -74,11 +87,10 @@ class ViewController: UIViewController {
                                     numb1.text = String(b)
                                     break ogLoop
                                 }
-                            } else {
-                                numb2.text = String(Int.random(in: numbs))
-                                //print("else \(numb2.text)")
-                                numb1.text = String(Int.random(in: numbs))
-                                //print("else \(numb2.text)")
+                            }
+                            if operatorLbl.text == "x" {
+                                numb2.text = String(Int.random(in: numbsForX))
+                                numb1.text = String(Int.random(in: numbsForX))
                                 break ogLoop
                             }
                         } else {
@@ -99,6 +111,11 @@ class ViewController: UIViewController {
                             print("\(b)")
                             operatorLbl.text = String(operts.randomElement()!)
                             //print("\(operatorLbl.text)")
+                            if operatorLbl.text == "+" {
+                                numb2.text = String(Int.random(in: numbs))
+                                numb1.text = String(Int.random(in: numbs))
+                                break ogLoop
+                            }
                             if operatorLbl.text == "-" {
                                 if a >= b {
                                     numb2.text = String(b)
@@ -109,11 +126,10 @@ class ViewController: UIViewController {
                                     numb1.text = String(b)
                                     break ogLoop
                                 }
-                            } else {
-                                numb2.text = String(Int.random(in: numbs))
-                                //print("else \(numb2.text)")
-                                numb1.text = String(Int.random(in: numbs))
-                                //print("else \(numb1.text)")
+                            }
+                            if operatorLbl.text == "x" {
+                                numb2.text = String(Int.random(in: numbsForX))
+                                numb1.text = String(Int.random(in: numbsForX))
                                 break ogLoop
                             }
                         } else {
@@ -125,7 +141,43 @@ class ViewController: UIViewController {
                         
                     }
                     if (operatorLbl.text == "x") {
-                        
+                        let corrAns = minPrd(num1: corval1, num2: corval2)
+                        print("the correct answer is \(corrAns)")
+                        ifIncorrect: if (ansR == corrAns) {
+                            print("answer is correct")
+                            answer.text = ""
+                            answer.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                            let a = Int.random(in: numbs)
+                            print("\(a)")
+                            let b = Int.random(in: numbs)
+                            print("\(b)")
+                            operatorLbl.text = String(operts.randomElement()!)
+                            //print("\(operatorLbl.text)")
+                            if operatorLbl.text == "+" {
+                                numb2.text = String(Int.random(in: numbs))
+                                numb1.text = String(Int.random(in: numbs))
+                                break ogLoop
+                            }
+                            if operatorLbl.text == "-" {
+                                if a >= b {
+                                    numb2.text = String(b)
+                                    numb1.text = String(a)
+                                    break ogLoop
+                                } else {
+                                    numb2.text = String(a)
+                                    numb1.text = String(b)
+                                    break ogLoop
+                                }
+                            }
+                            if operatorLbl.text == "x" {
+                                numb2.text = String(Int.random(in: numbsForX))
+                                numb1.text = String(Int.random(in: numbsForX))
+                                break ogLoop
+                            }
+                        } else {
+                            print("answer is incorrect")
+                            answer.layer.borderColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
+                        }
                     }
                 } else {print("valueAns answer error")}
             } else {print("value2 numb2 error")}
