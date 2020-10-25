@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     let numbs = 0..<40
     let numbsForX = 0..<13
     let numbsForD = 1..<11
-    let operts = ["+", "-", "x", "/"]
+    var operts = ["+", "-", "x", "/"]
     var currScore = 0
     var highScore = 0
 
@@ -25,13 +25,23 @@ class ViewController: UIViewController {
     @IBOutlet weak var submitBtn: UIButton!
     @IBOutlet weak var skipBtn: UIButton!
     
+    @IBOutlet weak var addOnlyBtn: UIButton!
+    @IBOutlet weak var subOnlyBtn: UIButton!
+    @IBOutlet weak var multpOnlyBtn: UIButton!
+    @IBOutlet weak var divOnlyBtn: UIButton!
+    @IBOutlet weak var rndAnyBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         answer.layer.borderWidth = 2.0
-        answer.layer.cornerRadius = 10.0
-        answer.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        answer.layer.cornerRadius = 5.0
+        answer.layer.borderColor = #colorLiteral(red: 0.5568627451, green: 0.5568627451, blue: 0.5725490196, alpha: 0.5)
         submitBtn.layer.cornerRadius = 10.0
+        
+        skipBtn.isHidden = false
+        answer.rightViewMode = UITextField.ViewMode.always
+        answer.rightView = skipBtn
         
         highScoreLbl.textColor = #colorLiteral(red: 0.5568627451, green: 0.5568627451, blue: 0.5725490196, alpha: 0.5)
         
@@ -356,6 +366,37 @@ class ViewController: UIViewController {
             let cD = aD*bD
             numb1.text = String(cD)
         }
+    }
+    
+    @IBAction func addOnlyBtnPressed(_ sender: Any) {
+        operts = ["+"]
+        currScore = 0
+        currScoreLbl.text = String(currScore)
+        skipBtnPressed(self)
+    }
+    @IBAction func subOnlyBtnPressed(_ sender: Any) {
+        operts = ["-"]
+        currScore = 0
+        currScoreLbl.text = String(currScore)
+        skipBtnPressed(self)
+    }
+    @IBAction func multpOnlyBtnPressed(_ sender: Any) {
+        operts = ["x"]
+        currScore = 0
+        currScoreLbl.text = String(currScore)
+        skipBtnPressed(self)
+    }
+    @IBAction func divOnlyBtnPressed(_ sender: Any) {
+        operts = ["/"]
+        currScore = 0
+        currScoreLbl.text = String(currScore)
+        skipBtnPressed(self)
+    }
+    @IBAction func rndAnyBtnPressed(_ sender: Any) {
+        operts = ["+", "-", "x", "/"]
+        currScore = 0
+        currScoreLbl.text = String(currScore)
+        skipBtnPressed(self)
     }
     
     func minSum (num1: Int, num2: Int)->Int {
