@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var numb1: UILabel!
     @IBOutlet weak var answer: UITextField!
     @IBOutlet weak var submitBtn: UIButton!
+    @IBOutlet weak var skipBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         answer.layer.borderWidth = 2.0
@@ -259,6 +260,38 @@ class ViewController: UIViewController {
             } else {print("value2 numb2 error")}
         } else {print("value1 numb1 error")}
         
+    }
+    @IBAction func skipBtnPressed(_ sender: Any) {
+        let a = Int.random(in: numbs)
+        //let aForX = Int.random(in: numbsForX)
+        let b = Int.random(in: numbs)
+        //let bForX = Int.random(in: numbsForX)
+        operatorLbl.text = String(operts.randomElement()!)
+        //print("\(operatorLbl.text)")
+        if operatorLbl.text == "+" {
+            numb2.text = String(Int.random(in: numbs))
+            numb1.text = String(Int.random(in: numbs))
+        }
+        if operatorLbl.text == "-" {
+            if a >= b {
+                numb2.text = String(b)
+                numb1.text = String(a)
+            } else {
+                numb2.text = String(a)
+                numb1.text = String(b)
+            }
+        }
+        if operatorLbl.text == "x" {
+            numb2.text = String(Int.random(in: numbsForX))
+            numb1.text = String(Int.random(in: numbsForX))
+        }
+        if operatorLbl.text == "/" {
+            let aD = Int.random(in: numbsForD)
+            numb2.text = String(aD)
+            let bD = Int.random(in: numbsForD)
+            let cD = aD*bD
+            numb1.text = String(cD)
+        }
     }
     
     func minSum (num1: Int, num2: Int)->Int {

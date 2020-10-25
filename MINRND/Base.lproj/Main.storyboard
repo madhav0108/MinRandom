@@ -66,12 +66,25 @@
                                     <constraint firstItem="6rc-Ho-qW2" firstAttribute="width" secondItem="0Xn-jC-cPL" secondAttribute="width" id="ZEX-5G-xeb"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QI3-eW-wxT">
+                                <rect key="frame" x="250.99999999999997" y="168" width="42.666666666666657" height="41.000000000000014"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="QI3-eW-wxT" secondAttribute="height" multiplier="1:1" id="DS2-u0-j7j"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="chevron.right.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="skipBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fim-nV-p9Q"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vtn-Xm-7Kb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-50" id="R6j-pK-Y2B"/>
-                            <constraint firstItem="vtn-Xm-7Kb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Uv5-Mz-rUx"/>
+                            <constraint firstItem="vtn-Xm-7Kb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-50" id="SFt-Sf-kfb"/>
+                            <constraint firstItem="QI3-eW-wxT" firstAttribute="centerX" secondItem="ulZ-gl-zeS" secondAttribute="centerX" id="bgf-yh-hAL"/>
+                            <constraint firstItem="vtn-Xm-7Kb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eYm-yP-fCy"/>
+                            <constraint firstItem="QI3-eW-wxT" firstAttribute="height" secondItem="0Xn-jC-cPL" secondAttribute="height" multiplier="0.45" id="r5o-k8-PND"/>
+                            <constraint firstItem="vtn-Xm-7Kb" firstAttribute="top" secondItem="QI3-eW-wxT" secondAttribute="bottom" constant="12" id="x3i-1R-Gey"/>
                         </constraints>
                     </view>
                     <connections>
@@ -79,6 +92,7 @@
                         <outlet property="numb1" destination="wy1-kH-PUB" id="a41-Yw-R3R"/>
                         <outlet property="numb2" destination="ulZ-gl-zeS" id="4NO-EA-RwY"/>
                         <outlet property="operatorLbl" destination="fbG-2l-ue5" id="u9D-j3-FNy"/>
+                        <outlet property="skipBtn" destination="QI3-eW-wxT" id="wra-dW-wxo"/>
                         <outlet property="submitBtn" destination="6rc-Ho-qW2" id="lDk-Ex-nAB"/>
                     </connections>
                 </viewController>
@@ -88,6 +102,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.right.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
