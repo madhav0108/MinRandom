@@ -76,19 +76,37 @@
                                     <action selector="skipBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fim-nV-p9Q"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYW-HU-z60">
+                                <rect key="frame" x="15.999999999999993" y="44" width="100.33333333333331" height="71"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="60"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TeJ-1d-KEF">
+                                <rect key="frame" x="124" y="72" width="44" height="36"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vtn-Xm-7Kb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-50" id="SFt-Sf-kfb"/>
+                            <constraint firstItem="TeJ-1d-KEF" firstAttribute="leading" secondItem="VYW-HU-z60" secondAttribute="trailing" constant="7.6699999999999999" id="Spi-Tx-NBJ"/>
                             <constraint firstItem="QI3-eW-wxT" firstAttribute="centerX" secondItem="ulZ-gl-zeS" secondAttribute="centerX" id="bgf-yh-hAL"/>
+                            <constraint firstItem="VYW-HU-z60" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="d5Q-pg-zxu"/>
                             <constraint firstItem="vtn-Xm-7Kb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eYm-yP-fCy"/>
+                            <constraint firstItem="VYW-HU-z60" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="nch-Rf-GQE"/>
                             <constraint firstItem="QI3-eW-wxT" firstAttribute="height" secondItem="0Xn-jC-cPL" secondAttribute="height" multiplier="0.45" id="r5o-k8-PND"/>
                             <constraint firstItem="vtn-Xm-7Kb" firstAttribute="top" secondItem="QI3-eW-wxT" secondAttribute="bottom" constant="12" id="x3i-1R-Gey"/>
+                            <constraint firstItem="TeJ-1d-KEF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="28" id="z0u-AP-2cP"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="answer" destination="0Xn-jC-cPL" id="6vk-vT-8no"/>
+                        <outlet property="currScoreLbl" destination="VYW-HU-z60" id="P48-Vd-fXC"/>
+                        <outlet property="highScoreLbl" destination="TeJ-1d-KEF" id="uWB-Db-xqO"/>
                         <outlet property="numb1" destination="wy1-kH-PUB" id="a41-Yw-R3R"/>
                         <outlet property="numb2" destination="ulZ-gl-zeS" id="4NO-EA-RwY"/>
                         <outlet property="operatorLbl" destination="fbG-2l-ue5" id="u9D-j3-FNy"/>

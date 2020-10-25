@@ -13,19 +13,30 @@ class ViewController: UIViewController {
     let numbsForX = 0..<13
     let numbsForD = 1..<11
     let operts = ["+", "-", "x", "/"]
+    var currScore = 0
+    var highScore = 0
 
+    @IBOutlet weak var currScoreLbl: UILabel!
+    @IBOutlet weak var highScoreLbl: UILabel!
     @IBOutlet weak var numb2: UILabel!
     @IBOutlet weak var operatorLbl: UILabel!
     @IBOutlet weak var numb1: UILabel!
     @IBOutlet weak var answer: UITextField!
     @IBOutlet weak var submitBtn: UIButton!
     @IBOutlet weak var skipBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         answer.layer.borderWidth = 2.0
         answer.layer.cornerRadius = 10.0
         answer.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         submitBtn.layer.cornerRadius = 10.0
+        
+        highScoreLbl.textColor = #colorLiteral(red: 0.5568627451, green: 0.5568627451, blue: 0.5725490196, alpha: 0.5)
+        
+        currScoreLbl.text = String(0)
+        highScoreLbl.text = String(0)
         
         let a = Int.random(in: numbs)
         //let aForX = Int.random(in: numbsForX)
@@ -68,10 +79,17 @@ class ViewController: UIViewController {
                 print("\(corval2) is value 2")
                 if let valueAnsR = answer.text, let ansR = Int(valueAnsR) {
                     print("\(ansR) is value answer")
+                    
                     opertLoop: if (operatorLbl.text == "+") {
                         let corrAns = minSum(num1: corval1, num2: corval2) 
                         print("the correct answer is \(corrAns)")
                         ifIncorrect: if (ansR == corrAns) {
+                            currScore += 1
+                            currScoreLbl.text = String(currScore)
+                            if (currScore > highScore) {
+                                highScore = currScore
+                                highScoreLbl.text = String(highScore)
+                            }
                             print("answer is correct")
                             answer.text = ""
                             answer.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -111,6 +129,8 @@ class ViewController: UIViewController {
                                 break ogLoop
                             }
                         } else {
+                            currScore = 0
+                            currScoreLbl.text = String(currScore)
                             print("answer is incorrect")
                             answer.layer.borderColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
                         }
@@ -119,6 +139,12 @@ class ViewController: UIViewController {
                         let corrAns = minDiff(num1: corval1, num2: corval2)
                         print("the correct answer is \(corrAns)")
                         ifIncorrect: if (ansR == corrAns) {
+                            currScore += 1
+                            currScoreLbl.text = String(currScore)
+                            if (currScore > highScore) {
+                                highScore = currScore
+                                highScoreLbl.text = String(highScore)
+                            }
                             print("answer is correct")
                             answer.text = ""
                             answer.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -158,6 +184,8 @@ class ViewController: UIViewController {
                                 break ogLoop
                             }
                         } else {
+                            currScore = 0
+                            currScoreLbl.text = String(currScore)
                             print("answer is incorrect")
                             answer.layer.borderColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
                         }
@@ -166,6 +194,12 @@ class ViewController: UIViewController {
                         let corrAns = minDiv(num1: corval1, num2: corval2)
                         print("the correct answer is \(corrAns)")
                         ifIncorrect: if (ansR == corrAns) {
+                            currScore += 1
+                            currScoreLbl.text = String(currScore)
+                            if (currScore > highScore) {
+                                highScore = currScore
+                                highScoreLbl.text = String(highScore)
+                            }
                             print("answer is correct")
                             answer.text = ""
                             answer.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -205,6 +239,8 @@ class ViewController: UIViewController {
                                 break ogLoop
                             }
                         } else {
+                            currScore = 0
+                            currScoreLbl.text = String(currScore)
                             print("answer is incorrect")
                             answer.layer.borderColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
                         }
@@ -213,6 +249,12 @@ class ViewController: UIViewController {
                         let corrAns = minPrd(num1: corval1, num2: corval2)
                         print("the correct answer is \(corrAns)")
                         ifIncorrect: if (ansR == corrAns) {
+                            currScore += 1
+                            currScoreLbl.text = String(currScore)
+                            if (currScore > highScore) {
+                                highScore = currScore
+                                highScoreLbl.text = String(highScore)
+                            }
                             print("answer is correct")
                             answer.text = ""
                             answer.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -252,6 +294,8 @@ class ViewController: UIViewController {
                                 break ogLoop
                             }
                         } else {
+                            currScore = 0
+                            currScoreLbl.text = String(currScore)
                             print("answer is incorrect")
                             answer.layer.borderColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
                         }
@@ -262,6 +306,26 @@ class ViewController: UIViewController {
         
     }
     @IBAction func skipBtnPressed(_ sender: Any) {
+        if (currScore <= 5) {
+            currScore = 0
+            currScoreLbl.text = String(currScore)
+        }
+        if (currScore > 5 && currScore <= 25) {
+            currScore -= 5
+            currScoreLbl.text = String(currScore)
+        }
+        if (currScore > 25 && currScore <= 50) {
+            currScore -= 7
+            currScoreLbl.text = String(currScore)
+        }
+        if (currScore > 50 && currScore <= 100) {
+            currScore -= 10
+            currScoreLbl.text = String(currScore)
+        }
+        if (currScore > 100) {
+            currScore -= 20
+            currScoreLbl.text = String(currScore)
+        }
         let a = Int.random(in: numbs)
         //let aForX = Int.random(in: numbsForX)
         let b = Int.random(in: numbs)
