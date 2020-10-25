@@ -10,8 +10,9 @@ import UIKit
 class ViewController: UIViewController {
     
     let numbs = 0..<40
-    let numbsForX = 0..<12
-    let operts = ["+", "-", "x"]
+    let numbsForX = 0..<13
+    let numbsForD = 1..<11
+    let operts = ["+", "-", "x", "/"]
 
     @IBOutlet weak var numb2: UILabel!
     @IBOutlet weak var operatorLbl: UILabel!
@@ -47,6 +48,13 @@ class ViewController: UIViewController {
         if operatorLbl.text == "x" {
             numb2.text = String(Int.random(in: numbsForX))
             numb1.text = String(Int.random(in: numbsForX))
+        }
+        if operatorLbl.text == "/" {
+            let aD = Int.random(in: numbsForD)
+            numb2.text = String(aD)
+            let bD = Int.random(in: numbsForD)
+            let cD = aD*bD
+            numb1.text = String(cD)
         }
         // Do any additional setup after loading the view.
     }
@@ -93,6 +101,14 @@ class ViewController: UIViewController {
                                 numb1.text = String(Int.random(in: numbsForX))
                                 break ogLoop
                             }
+                            if operatorLbl.text == "/" {
+                                let aD = Int.random(in: numbsForD)
+                                numb2.text = String(aD)
+                                let bD = Int.random(in: numbsForD)
+                                let cD = aD*bD
+                                numb1.text = String(cD)
+                                break ogLoop
+                            }
                         } else {
                             print("answer is incorrect")
                             answer.layer.borderColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
@@ -132,15 +148,67 @@ class ViewController: UIViewController {
                                 numb1.text = String(Int.random(in: numbsForX))
                                 break ogLoop
                             }
+                            if operatorLbl.text == "/" {
+                                let aD = Int.random(in: numbsForD)
+                                numb2.text = String(aD)
+                                let bD = Int.random(in: numbsForD)
+                                let cD = aD*bD
+                                numb1.text = String(cD)
+                                break ogLoop
+                            }
                         } else {
                             print("answer is incorrect")
                             answer.layer.borderColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
                         }
                     }
-                    if (operatorLbl.text == "/") {
-                        
+                    opertLoop: if (operatorLbl.text == "/") {
+                        let corrAns = minDiv(num1: corval1, num2: corval2)
+                        print("the correct answer is \(corrAns)")
+                        ifIncorrect: if (ansR == corrAns) {
+                            print("answer is correct")
+                            answer.text = ""
+                            answer.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                            let a = Int.random(in: numbs)
+                            print("\(a)")
+                            let b = Int.random(in: numbs)
+                            print("\(b)")
+                            operatorLbl.text = String(operts.randomElement()!)
+                            //print("\(operatorLbl.text)")
+                            if operatorLbl.text == "+" {
+                                numb2.text = String(Int.random(in: numbs))
+                                numb1.text = String(Int.random(in: numbs))
+                                break ogLoop
+                            }
+                            if operatorLbl.text == "-" {
+                                if a >= b {
+                                    numb2.text = String(b)
+                                    numb1.text = String(a)
+                                    break ogLoop
+                                } else {
+                                    numb2.text = String(a)
+                                    numb1.text = String(b)
+                                    break ogLoop
+                                }
+                            }
+                            if operatorLbl.text == "x" {
+                                numb2.text = String(Int.random(in: numbsForX))
+                                numb1.text = String(Int.random(in: numbsForX))
+                                break ogLoop
+                            }
+                            if operatorLbl.text == "/" {
+                                let aD = Int.random(in: numbsForD)
+                                numb2.text = String(aD)
+                                let bD = Int.random(in: numbsForD)
+                                let cD = aD*bD
+                                numb1.text = String(cD)
+                                break ogLoop
+                            }
+                        } else {
+                            print("answer is incorrect")
+                            answer.layer.borderColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
+                        }
                     }
-                    if (operatorLbl.text == "x") {
+                    opertLoop: if (operatorLbl.text == "x") {
                         let corrAns = minPrd(num1: corval1, num2: corval2)
                         print("the correct answer is \(corrAns)")
                         ifIncorrect: if (ansR == corrAns) {
@@ -172,6 +240,14 @@ class ViewController: UIViewController {
                             if operatorLbl.text == "x" {
                                 numb2.text = String(Int.random(in: numbsForX))
                                 numb1.text = String(Int.random(in: numbsForX))
+                                break ogLoop
+                            }
+                            if operatorLbl.text == "/" {
+                                let aD = Int.random(in: numbsForD)
+                                numb2.text = String(aD)
+                                let bD = Int.random(in: numbsForD)
+                                let cD = aD*bD
+                                numb1.text = String(cD)
                                 break ogLoop
                             }
                         } else {
