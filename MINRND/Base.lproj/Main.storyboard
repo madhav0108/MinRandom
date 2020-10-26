@@ -49,10 +49,10 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rc-Ho-qW2">
                                         <rect key="frame" x="0.0" y="177.66666666666669" width="262.33333333333331" height="62.333333333333343"/>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.98039215686274506" green="0.87058823529411766" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="30"/>
                                         <state key="normal" title="submit">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="submitBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L68-Df-Kd2"/>
@@ -85,6 +85,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="bQ8-IN-PFe" secondAttribute="height" multiplier="1:1" id="4Vp-kM-PXd"/>
                                         </constraints>
+                                        <color key="tintColor" red="0.98039215686274506" green="0.87058823529411766" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" backgroundImage="square.split.2x2.fill" catalog="system"/>
                                         <connections>
                                             <action selector="addOnlyBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AMg-vm-now"/>
@@ -95,6 +96,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="yXU-41-U7h" secondAttribute="height" multiplier="1:1" id="WFX-Lc-sOe"/>
                                         </constraints>
+                                        <color key="tintColor" red="0.98039215686274506" green="0.87058823529411766" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" backgroundImage="square.split.1x2.fill" catalog="system"/>
                                         <connections>
                                             <action selector="subOnlyBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7BB-qa-Mg2"/>
@@ -105,6 +107,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="gku-Xo-M22" secondAttribute="height" multiplier="1:1" id="A6M-Kc-Jrp"/>
                                         </constraints>
+                                        <color key="tintColor" red="0.98039215686274506" green="0.87058823529411766" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" backgroundImage="square.split.diagonal.2x2.fill" catalog="system"/>
                                         <connections>
                                             <action selector="multpOnlyBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hfQ-Rd-auP"/>
@@ -115,6 +118,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="VHO-xe-Au4" secondAttribute="height" multiplier="1:1" id="2LB-ZC-ueg"/>
                                         </constraints>
+                                        <color key="tintColor" red="0.98039215686274506" green="0.87058823529411766" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" backgroundImage="square.split.diagonal.fill" catalog="system"/>
                                         <connections>
                                             <action selector="divOnlyBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YHT-wy-UH8"/>
@@ -125,6 +129,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="edi-G6-PWQ" secondAttribute="height" multiplier="1:1" id="X2Y-bc-Gej"/>
                                         </constraints>
+                                        <color key="tintColor" red="0.98039215686274506" green="0.87058823529411766" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" backgroundImage="r.square.fill.on.square.fill" catalog="system"/>
                                         <connections>
                                             <action selector="rndAnyBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tkZ-Cw-b0H"/>
@@ -138,6 +143,7 @@
                                     <constraint firstAttribute="width" secondItem="QI3-eW-wxT" secondAttribute="height" multiplier="1:1" id="DS2-u0-j7j"/>
                                     <constraint firstAttribute="width" constant="40.659999999999997" id="GRU-Re-Zq1"/>
                                 </constraints>
+                                <color key="tintColor" red="0.98039215686274506" green="0.87058823529411766" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" backgroundImage="chevron.right.square.fill" catalog="system"/>
                                 <connections>
                                     <action selector="skipBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fim-nV-p9Q"/>
