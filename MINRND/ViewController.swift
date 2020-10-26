@@ -15,6 +15,11 @@ class ViewController: UIViewController {
     var operts = ["+", "-", "x", "/"]
     var currScore = 0
     var highScore = 0
+    
+    var timer: Timer!
+    var aT = 5
+    //default value for ice or fire segmented control set to 0 (ice)
+    var iceOrFireMode = 0
 
     @IBOutlet weak var currScoreLbl: UILabel!
     @IBOutlet weak var highScoreLbl: UILabel!
@@ -30,6 +35,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var multpOnlyBtn: UIButton!
     @IBOutlet weak var divOnlyBtn: UIButton!
     @IBOutlet weak var rndAnyBtn: UIButton!
+    
+    @IBOutlet weak var timeLeftLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,8 +86,66 @@ class ViewController: UIViewController {
             numb1.text = String(cD)
         }
         // Do any additional setup after loading the view.
+        iceOrFireMode = 0
+        currScoreLbl.isHidden = true
+        highScoreLbl.isHidden = true
+        timeLeftLbl.isHidden = true
+        rndAnyBtn.isHidden = true
+        multpOnlyBtn.isHidden = true
+        addOnlyBtn.isHidden = true
+        subOnlyBtn.isHidden = true
+        divOnlyBtn.isHidden = true
     }
-
+    
+    @objc func updateTimeLeft() {
+        aT = Int(timeLeftLbl.text!)!
+        if aT > 0 {
+            aT -= 1
+            timeLeftLbl.text = String(aT)
+        }
+        if aT == 0 {
+            skipBtnPressed(self)
+            currScore = 0
+            currScoreLbl.text = String(currScore)
+            aT = 5
+            timeLeftLbl.text = String(aT)
+        }
+    }
+    
+    @IBAction func iceOrFireModeControl(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            iceOrFireMode = 0
+            timer.invalidate()
+            currScoreLbl.isHidden = true
+            highScoreLbl.isHidden = true
+            timeLeftLbl.isHidden = true
+            rndAnyBtn.isHidden = true
+            multpOnlyBtn.isHidden = true
+            addOnlyBtn.isHidden = true
+            subOnlyBtn.isHidden = true
+            divOnlyBtn.isHidden = true
+        case 1:
+            iceOrFireMode = 1
+            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimeLeft), userInfo: nil, repeats: true)
+            currScoreLbl.isHidden = false
+            highScoreLbl.isHidden = false
+            timeLeftLbl.isHidden = false
+            rndAnyBtn.isHidden = false
+            multpOnlyBtn.isHidden = false
+            addOnlyBtn.isHidden = false
+            subOnlyBtn.isHidden = false
+            divOnlyBtn.isHidden = false
+            skipBtnPressed(self)
+            aT = 5
+            timeLeftLbl.text = String(aT)
+            currScore = 0
+            currScoreLbl.text = String(currScore)
+        default:
+            break
+        }
+    }
+    
     @IBAction func submitBtnPressed(_ sender: Any) {
         
         ogLoop: if let value1 = numb1.text, let corval1 = Int(value1) {
@@ -96,10 +161,14 @@ class ViewController: UIViewController {
                         ifIncorrect: if (ansR == corrAns) {
                             currScore += 1
                             currScoreLbl.text = String(currScore)
-                            if (currScore > highScore) {
-                                highScore = currScore
-                                highScoreLbl.text = String(highScore)
+                            if (iceOrFireMode == 1) {
+                                if (currScore > highScore) {
+                                    highScore = currScore
+                                    highScoreLbl.text = String(highScore)
+                                }
                             }
+                            aT = 5
+                            timeLeftLbl.text = String(aT)
                             print("answer is correct")
                             answer.text = ""
                             answer.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -151,10 +220,14 @@ class ViewController: UIViewController {
                         ifIncorrect: if (ansR == corrAns) {
                             currScore += 1
                             currScoreLbl.text = String(currScore)
-                            if (currScore > highScore) {
-                                highScore = currScore
-                                highScoreLbl.text = String(highScore)
+                            if (iceOrFireMode == 1) {
+                                if (currScore > highScore) {
+                                    highScore = currScore
+                                    highScoreLbl.text = String(highScore)
+                                }
                             }
+                            aT = 5
+                            timeLeftLbl.text = String(aT)
                             print("answer is correct")
                             answer.text = ""
                             answer.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -206,10 +279,14 @@ class ViewController: UIViewController {
                         ifIncorrect: if (ansR == corrAns) {
                             currScore += 1
                             currScoreLbl.text = String(currScore)
-                            if (currScore > highScore) {
-                                highScore = currScore
-                                highScoreLbl.text = String(highScore)
+                            if (iceOrFireMode == 1) {
+                                if (currScore > highScore) {
+                                    highScore = currScore
+                                    highScoreLbl.text = String(highScore)
+                                }
                             }
+                            aT = 5
+                            timeLeftLbl.text = String(aT)
                             print("answer is correct")
                             answer.text = ""
                             answer.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -261,10 +338,14 @@ class ViewController: UIViewController {
                         ifIncorrect: if (ansR == corrAns) {
                             currScore += 1
                             currScoreLbl.text = String(currScore)
-                            if (currScore > highScore) {
-                                highScore = currScore
-                                highScoreLbl.text = String(highScore)
+                            if (iceOrFireMode == 1) {
+                                if (currScore > highScore) {
+                                    highScore = currScore
+                                    highScoreLbl.text = String(highScore)
+                                }
                             }
+                            aT = 5
+                            timeLeftLbl.text = String(aT)
                             print("answer is correct")
                             answer.text = ""
                             answer.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -370,33 +451,33 @@ class ViewController: UIViewController {
     
     @IBAction func addOnlyBtnPressed(_ sender: Any) {
         operts = ["+"]
+        skipBtnPressed(self)
         currScore = 0
         currScoreLbl.text = String(currScore)
-        skipBtnPressed(self)
     }
     @IBAction func subOnlyBtnPressed(_ sender: Any) {
         operts = ["-"]
+        skipBtnPressed(self)
         currScore = 0
         currScoreLbl.text = String(currScore)
-        skipBtnPressed(self)
     }
     @IBAction func multpOnlyBtnPressed(_ sender: Any) {
         operts = ["x"]
+        skipBtnPressed(self)
         currScore = 0
         currScoreLbl.text = String(currScore)
-        skipBtnPressed(self)
     }
     @IBAction func divOnlyBtnPressed(_ sender: Any) {
         operts = ["/"]
+        skipBtnPressed(self)
         currScore = 0
         currScoreLbl.text = String(currScore)
-        skipBtnPressed(self)
     }
     @IBAction func rndAnyBtnPressed(_ sender: Any) {
         operts = ["+", "-", "x", "/"]
+        skipBtnPressed(self)
         currScore = 0
         currScoreLbl.text = String(currScore)
-        skipBtnPressed(self)
     }
     
     func minSum (num1: Int, num2: Int)->Int {

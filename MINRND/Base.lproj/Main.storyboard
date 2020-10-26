@@ -138,7 +138,7 @@
                                 </subviews>
                             </stackView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QI3-eW-wxT">
-                                <rect key="frame" x="318" y="68" width="40.666666666666686" height="37.666666666666657"/>
+                                <rect key="frame" x="318" y="112" width="40.666666666666686" height="37.666666666666686"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="QI3-eW-wxT" secondAttribute="height" multiplier="1:1" id="DS2-u0-j7j"/>
                                     <constraint firstAttribute="width" constant="40.659999999999997" id="GRU-Re-Zq1"/>
@@ -149,21 +149,43 @@
                                     <action selector="skipBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fim-nV-p9Q"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkE-zu-0Wl">
+                                <rect key="frame" x="176.33333333333334" y="130.66666666666666" width="22.333333333333343" height="47.333333333333343"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VJN-G2-RNh">
+                                <rect key="frame" x="246.66666666666666" y="72" width="112.33333333333334" height="32"/>
+                                <segments>
+                                    <segment title="🧊"/>
+                                    <segment title="🔥"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" red="0.98039215686274506" green="0.87058823529411766" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="iceOrFireModeControl:" destination="BYZ-38-t0r" eventType="valueChanged" id="elw-hx-MZK"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="0Xn-jC-cPL" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.7" id="5kf-tz-Z5B"/>
+                            <constraint firstItem="VJN-G2-RNh" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.3" id="B4k-d2-ujq"/>
+                            <constraint firstItem="gkE-zu-0Wl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LMx-Xq-8xK"/>
                             <constraint firstItem="RTd-vX-sGr" firstAttribute="top" secondItem="vtn-Xm-7Kb" secondAttribute="bottom" constant="16" id="LnV-p5-KcK"/>
+                            <constraint firstItem="vtn-Xm-7Kb" firstAttribute="top" secondItem="gkE-zu-0Wl" secondAttribute="bottom" constant="8" symbolic="YES" id="QVz-3E-9dC"/>
                             <constraint firstItem="vtn-Xm-7Kb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-100" id="SFt-Sf-kfb"/>
                             <constraint firstItem="TeJ-1d-KEF" firstAttribute="leading" secondItem="VYW-HU-z60" secondAttribute="trailing" constant="7.6699999999999999" id="Spi-Tx-NBJ"/>
                             <constraint firstItem="VYW-HU-z60" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="d5Q-pg-zxu"/>
                             <constraint firstItem="vtn-Xm-7Kb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eYm-yP-fCy"/>
                             <constraint firstItem="VYW-HU-z60" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="nch-Rf-GQE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QI3-eW-wxT" secondAttribute="trailing" constant="16.329999999999998" id="ocY-dT-2d5"/>
-                            <constraint firstItem="QI3-eW-wxT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="22.329999999999998" id="rzw-W8-AqS"/>
+                            <constraint firstItem="QI3-eW-wxT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="66.329999999999998" id="rzw-W8-AqS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VJN-G2-RNh" secondAttribute="trailing" constant="16" id="syw-u2-uFX"/>
                             <constraint firstItem="bQ8-IN-PFe" firstAttribute="height" secondItem="QI3-eW-wxT" secondAttribute="height" multiplier="1.175" id="tCc-lp-vNt"/>
                             <constraint firstItem="RTd-vX-sGr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="x3e-vJ-mcR"/>
+                            <constraint firstItem="VJN-G2-RNh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="28" id="xCO-4h-r8W"/>
                             <constraint firstItem="TeJ-1d-KEF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="28" id="z0u-AP-2cP"/>
                         </constraints>
                     </view>
@@ -181,6 +203,7 @@
                         <outlet property="skipBtn" destination="QI3-eW-wxT" id="wra-dW-wxo"/>
                         <outlet property="subOnlyBtn" destination="yXU-41-U7h" id="mtQ-kX-7wT"/>
                         <outlet property="submitBtn" destination="6rc-Ho-qW2" id="lDk-Ex-nAB"/>
+                        <outlet property="timeLeftLbl" destination="gkE-zu-0Wl" id="GXr-s6-ddu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
