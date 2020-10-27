@@ -182,10 +182,9 @@ class ViewController: UIViewController {
             subOnlyBtn.isHidden = false
             divOnlyBtn.isHidden = false
             skipBtnPressed(self)
-            aT = 5
-            timeLeftLbl.text = String(aT)
             currScore = 0
             currScoreLbl.text = String(currScore)
+            answer.text = ""
         default:
             break
         }
@@ -262,6 +261,9 @@ class ViewController: UIViewController {
                         } else {
                             currScore = 0
                             currScoreLbl.text = String(currScore)
+                            if (iceOrFireMode == 1) {
+                                answer.text = ""
+                            }
                             print("answer is incorrect")
                             answer.layer.borderWidth = 2.0
                             answer.layer.cornerRadius = 10.0
@@ -330,6 +332,9 @@ class ViewController: UIViewController {
                         } else {
                             currScore = 0
                             currScoreLbl.text = String(currScore)
+                            if (iceOrFireMode == 1) {
+                                answer.text = ""
+                            }
                             print("answer is incorrect")
                             answer.layer.borderWidth = 2.0
                             answer.layer.cornerRadius = 10.0
@@ -398,6 +403,9 @@ class ViewController: UIViewController {
                         } else {
                             currScore = 0
                             currScoreLbl.text = String(currScore)
+                            if (iceOrFireMode == 1) {
+                                answer.text = ""
+                            }
                             print("answer is incorrect")
                             answer.layer.borderWidth = 2.0
                             answer.layer.cornerRadius = 10.0
@@ -466,6 +474,9 @@ class ViewController: UIViewController {
                         } else {
                             currScore = 0
                             currScoreLbl.text = String(currScore)
+                            if (iceOrFireMode == 1) {
+                                answer.text = ""
+                            }
                             print("answer is incorrect")
                             answer.layer.borderWidth = 2.0
                             answer.layer.cornerRadius = 10.0
@@ -528,6 +539,8 @@ class ViewController: UIViewController {
             let cD = aD*bD
             numb1.text = String(cD)
         }
+        aT = 5
+        timeLeftLbl.text = String(aT)
     }
     
     @IBAction func addOnlyBtnPressed(_ sender: Any) {
