@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
+    
+    let appDelegate = UIApplication.shared.delegate as? AppDelegate
     
     let numbs = 0..<40
     let numbsForX = 0..<13
@@ -20,7 +23,7 @@ class ViewController: UIViewController {
     var aT = 5
     //default value for ice or fire segmented control set to 0 (ice)
     var iceOrFireMode = 0
-
+    
     @IBOutlet weak var currScoreLbl: UILabel!
     @IBOutlet weak var highScoreLbl: UILabel!
     @IBOutlet weak var numb2: UILabel!
@@ -41,9 +44,33 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        answer.layer.borderWidth = 2.0
-        answer.layer.cornerRadius = 5.0
-        answer.layer.borderColor = #colorLiteral(red: 0.5568627451, green: 0.5568627451, blue: 0.5725490196, alpha: 0.5)
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Score")
+        
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let context = appDelegate?.persistentContainer.viewContext
+            
+            let results = try context?.fetch(request)
+            
+            if results!.count > 0 {
+                for result in results as! [NSManagedObject] {
+                    if let highScoreF = result.value(forKey: "highScore") as? Int16 {
+                        highScore = Int(highScoreF)
+                        //print(highScore)
+                        highScoreLbl.text = String(highScore)
+                    }
+                }
+            } else {
+                print("no results found")
+            }
+            print("fetch successful")
+            
+        } catch {
+            debugPrint("Couldn't fetch: \(error.localizedDescription)")
+        }
+        
+        answer.layer.borderWidth = 0.0
         submitBtn.layer.cornerRadius = 10.0
         
         skipBtn.isHidden = false
@@ -53,7 +80,6 @@ class ViewController: UIViewController {
         highScoreLbl.textColor = #colorLiteral(red: 0.5568627451, green: 0.5568627451, blue: 0.5725490196, alpha: 0.5)
         
         currScoreLbl.text = String(0)
-        highScoreLbl.text = String(0)
         
         let a = Int.random(in: numbs)
         //let aForX = Int.random(in: numbsForX)
@@ -97,6 +123,24 @@ class ViewController: UIViewController {
         divOnlyBtn.isHidden = true
     }
     
+    func save(completion: (_ finished: Bool) -> ()) {
+        let context = appDelegate?.persistentContainer.viewContext
+        
+        let newScore = NSEntityDescription.insertNewObject(forEntityName: "Score", into: context!)
+        
+        newScore.setValue(highScore, forKey: "highScore")
+        
+        do {
+            try context?.save()
+            print("save successful")
+            print("high score = \(highScore)")
+            completion(true)
+        } catch {
+            debugPrint("Couldn't save: \(error.localizedDescription)")
+            completion(false)
+        }
+    }
+    
     @objc func updateTimeLeft() {
         aT = Int(timeLeftLbl.text!)!
         if aT > 0 {
@@ -107,6 +151,7 @@ class ViewController: UIViewController {
             skipBtnPressed(self)
             currScore = 0
             currScoreLbl.text = String(currScore)
+            answer.text = ""
             aT = 5
             timeLeftLbl.text = String(aT)
         }
@@ -167,11 +212,18 @@ class ViewController: UIViewController {
                                     highScoreLbl.text = String(highScore)
                                 }
                             }
+                            if (highScore > 0) {
+                                self.save { (complete) in
+                                    if complete {
+                                        print("high score = \(highScore) saved")
+                                    }
+                                }
+                            }
                             aT = 5
                             timeLeftLbl.text = String(aT)
                             print("answer is correct")
                             answer.text = ""
-                            answer.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                            answer.layer.borderWidth = 0.0
                             let a = Int.random(in: numbs)
                             print("\(a)")
                             let b = Int.random(in: numbs)
@@ -211,6 +263,8 @@ class ViewController: UIViewController {
                             currScore = 0
                             currScoreLbl.text = String(currScore)
                             print("answer is incorrect")
+                            answer.layer.borderWidth = 2.0
+                            answer.layer.cornerRadius = 10.0
                             answer.layer.borderColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
                         }
                     }
@@ -226,11 +280,18 @@ class ViewController: UIViewController {
                                     highScoreLbl.text = String(highScore)
                                 }
                             }
+                            if (highScore > 0) {
+                                self.save { (complete) in
+                                    if complete {
+                                        print("high score = \(highScore) saved")
+                                    }
+                                }
+                            }
                             aT = 5
                             timeLeftLbl.text = String(aT)
                             print("answer is correct")
                             answer.text = ""
-                            answer.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                            answer.layer.borderWidth = 0.0
                             let a = Int.random(in: numbs)
                             print("\(a)")
                             let b = Int.random(in: numbs)
@@ -270,6 +331,8 @@ class ViewController: UIViewController {
                             currScore = 0
                             currScoreLbl.text = String(currScore)
                             print("answer is incorrect")
+                            answer.layer.borderWidth = 2.0
+                            answer.layer.cornerRadius = 10.0
                             answer.layer.borderColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
                         }
                     }
@@ -285,11 +348,18 @@ class ViewController: UIViewController {
                                     highScoreLbl.text = String(highScore)
                                 }
                             }
+                            if (highScore > 0) {
+                                self.save { (complete) in
+                                    if complete {
+                                        print("high score = \(highScore) saved")
+                                    }
+                                }
+                            }
                             aT = 5
                             timeLeftLbl.text = String(aT)
                             print("answer is correct")
                             answer.text = ""
-                            answer.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                            answer.layer.borderWidth = 0.0
                             let a = Int.random(in: numbs)
                             print("\(a)")
                             let b = Int.random(in: numbs)
@@ -329,6 +399,8 @@ class ViewController: UIViewController {
                             currScore = 0
                             currScoreLbl.text = String(currScore)
                             print("answer is incorrect")
+                            answer.layer.borderWidth = 2.0
+                            answer.layer.cornerRadius = 10.0
                             answer.layer.borderColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
                         }
                     }
@@ -344,11 +416,18 @@ class ViewController: UIViewController {
                                     highScoreLbl.text = String(highScore)
                                 }
                             }
+                            if (highScore > 0) {
+                                self.save { (complete) in
+                                    if complete {
+                                        print("high score = \(highScore) saved")
+                                    }
+                                }
+                            }
                             aT = 5
                             timeLeftLbl.text = String(aT)
                             print("answer is correct")
                             answer.text = ""
-                            answer.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                            answer.layer.borderWidth = 0.0
                             let a = Int.random(in: numbs)
                             print("\(a)")
                             let b = Int.random(in: numbs)
@@ -388,6 +467,8 @@ class ViewController: UIViewController {
                             currScore = 0
                             currScoreLbl.text = String(currScore)
                             print("answer is incorrect")
+                            answer.layer.borderWidth = 2.0
+                            answer.layer.cornerRadius = 10.0
                             answer.layer.borderColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
                         }
                     }
