@@ -203,15 +203,15 @@ class ViewController: UIViewController {
                         let corrAns = minSum(num1: corval1, num2: corval2) 
                         print("the correct answer is \(corrAns)")
                         ifIncorrect: if (ansR == corrAns) {
-                            currScore += 1
-                            currScoreLbl.text = String(currScore)
                             if (iceOrFireMode == 1) {
+                                currScore += 1
+                                currScoreLbl.text = String(currScore)
                                 if (currScore > highScore) {
                                     highScore = currScore
                                     highScoreLbl.text = String(highScore)
                                 }
                             }
-                            if (highScore > 0) {
+                            if (currScore >= highScore) {
                                 self.save { (complete) in
                                     if complete {
                                         print("high score = \(highScore) saved")
@@ -274,15 +274,15 @@ class ViewController: UIViewController {
                         let corrAns = minDiff(num1: corval1, num2: corval2)
                         print("the correct answer is \(corrAns)")
                         ifIncorrect: if (ansR == corrAns) {
-                            currScore += 1
-                            currScoreLbl.text = String(currScore)
                             if (iceOrFireMode == 1) {
+                                currScore += 1
+                                currScoreLbl.text = String(currScore)
                                 if (currScore > highScore) {
                                     highScore = currScore
                                     highScoreLbl.text = String(highScore)
                                 }
                             }
-                            if (highScore > 0) {
+                            if (currScore >= highScore) {
                                 self.save { (complete) in
                                     if complete {
                                         print("high score = \(highScore) saved")
@@ -345,15 +345,15 @@ class ViewController: UIViewController {
                         let corrAns = minDiv(num1: corval1, num2: corval2)
                         print("the correct answer is \(corrAns)")
                         ifIncorrect: if (ansR == corrAns) {
-                            currScore += 1
-                            currScoreLbl.text = String(currScore)
                             if (iceOrFireMode == 1) {
+                                currScore += 1
+                                currScoreLbl.text = String(currScore)
                                 if (currScore > highScore) {
                                     highScore = currScore
                                     highScoreLbl.text = String(highScore)
                                 }
                             }
-                            if (highScore > 0) {
+                            if (currScore >= highScore) {
                                 self.save { (complete) in
                                     if complete {
                                         print("high score = \(highScore) saved")
@@ -416,15 +416,15 @@ class ViewController: UIViewController {
                         let corrAns = minPrd(num1: corval1, num2: corval2)
                         print("the correct answer is \(corrAns)")
                         ifIncorrect: if (ansR == corrAns) {
-                            currScore += 1
-                            currScoreLbl.text = String(currScore)
                             if (iceOrFireMode == 1) {
+                                currScore += 1
+                                currScoreLbl.text = String(currScore)
                                 if (currScore > highScore) {
                                     highScore = currScore
                                     highScoreLbl.text = String(highScore)
                                 }
                             }
-                            if (highScore > 0) {
+                            if (currScore >= highScore) {
                                 self.save { (complete) in
                                     if complete {
                                         print("high score = \(highScore) saved")
