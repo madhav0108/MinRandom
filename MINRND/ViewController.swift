@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     var currScore = 0
     var highScore = 0
     
+    var optOpertMode = 0
+    
     var timer: Timer!
     var aT = 5
     //default value for ice or fire segmented control set to 0 (ice)
@@ -207,8 +209,10 @@ class ViewController: UIViewController {
                                 currScore += 1
                                 currScoreLbl.text = String(currScore)
                                 if (currScore > highScore) {
-                                    highScore = currScore
-                                    highScoreLbl.text = String(highScore)
+                                    if optOpertMode == 0 {
+                                        highScore = currScore
+                                        highScoreLbl.text = String(highScore)
+                                    }
                                 }
                             }
                             if (currScore >= highScore) {
@@ -278,8 +282,10 @@ class ViewController: UIViewController {
                                 currScore += 1
                                 currScoreLbl.text = String(currScore)
                                 if (currScore > highScore) {
-                                    highScore = currScore
-                                    highScoreLbl.text = String(highScore)
+                                    if optOpertMode == 0 {
+                                        highScore = currScore
+                                        highScoreLbl.text = String(highScore)
+                                    }
                                 }
                             }
                             if (currScore >= highScore) {
@@ -349,8 +355,10 @@ class ViewController: UIViewController {
                                 currScore += 1
                                 currScoreLbl.text = String(currScore)
                                 if (currScore > highScore) {
-                                    highScore = currScore
-                                    highScoreLbl.text = String(highScore)
+                                    if optOpertMode == 0 {
+                                        highScore = currScore
+                                        highScoreLbl.text = String(highScore)
+                                    }
                                 }
                             }
                             if (currScore >= highScore) {
@@ -420,8 +428,10 @@ class ViewController: UIViewController {
                                 currScore += 1
                                 currScoreLbl.text = String(currScore)
                                 if (currScore > highScore) {
-                                    highScore = currScore
-                                    highScoreLbl.text = String(highScore)
+                                    if optOpertMode == 0 {
+                                        highScore = currScore
+                                        highScoreLbl.text = String(highScore)
+                                    }
                                 }
                             }
                             if (currScore >= highScore) {
@@ -545,30 +555,40 @@ class ViewController: UIViewController {
     
     @IBAction func addOnlyBtnPressed(_ sender: Any) {
         operts = ["+"]
+        highScoreLbl.isHidden = true
+        optOpertMode = 1
         skipBtnPressed(self)
         currScore = 0
         currScoreLbl.text = String(currScore)
     }
     @IBAction func subOnlyBtnPressed(_ sender: Any) {
         operts = ["-"]
+        highScoreLbl.isHidden = true
+        optOpertMode = 1
         skipBtnPressed(self)
         currScore = 0
         currScoreLbl.text = String(currScore)
     }
     @IBAction func multpOnlyBtnPressed(_ sender: Any) {
         operts = ["x"]
+        highScoreLbl.isHidden = true
+        optOpertMode = 1
         skipBtnPressed(self)
         currScore = 0
         currScoreLbl.text = String(currScore)
     }
     @IBAction func divOnlyBtnPressed(_ sender: Any) {
         operts = ["/"]
+        highScoreLbl.isHidden = true
+        optOpertMode = 1
         skipBtnPressed(self)
         currScore = 0
         currScoreLbl.text = String(currScore)
     }
     @IBAction func rndAnyBtnPressed(_ sender: Any) {
         operts = ["+", "-", "x", "/"]
+        highScoreLbl.isHidden = false
+        optOpertMode = 0
         skipBtnPressed(self)
         currScore = 0
         currScoreLbl.text = String(currScore)
