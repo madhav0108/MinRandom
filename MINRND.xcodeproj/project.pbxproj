@@ -14,6 +14,8 @@
 		A9CF7C9A254207CF00133417 /* MINRND.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A9CF7C98254207CF00133417 /* MINRND.xcdatamodeld */; };
 		A9CF7C9C254207D300133417 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9CF7C9B254207D300133417 /* Assets.xcassets */; };
 		A9CF7C9F254207D300133417 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9CF7C9D254207D300133417 /* LaunchScreen.storyboard */; };
+		A9CF7CB4254B25DE00133417 /* MINRNDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CF7CB3254B25DD00133417 /* MINRNDViewController.swift */; };
+		A9CF7CB7254B26FC00133417 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CF7CB6254B26FC00133417 /* UIViewControllerExt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		A9CF7C9B254207D300133417 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A9CF7C9E254207D300133417 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A9CF7CA0254207D300133417 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9CF7CB3254B25DD00133417 /* MINRNDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MINRNDViewController.swift; sourceTree = "<group>"; };
+		A9CF7CB6254B26FC00133417 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 				A9CF7C9D254207D300133417 /* LaunchScreen.storyboard */,
 				A9CF7CA0254207D300133417 /* Info.plist */,
 				A9CF7C98254207CF00133417 /* MINRND.xcdatamodeld */,
+				A9CF7CB3254B25DD00133417 /* MINRNDViewController.swift */,
+				A9CF7CB6254B26FC00133417 /* UIViewControllerExt.swift */,
 			);
 			path = MINRND;
 			sourceTree = "<group>";
@@ -141,6 +147,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9CF7C94254207CE00133417 /* ViewController.swift in Sources */,
+				A9CF7CB4254B25DE00133417 /* MINRNDViewController.swift in Sources */,
+				A9CF7CB7254B26FC00133417 /* UIViewControllerExt.swift in Sources */,
 				A9CF7C90254207CE00133417 /* AppDelegate.swift in Sources */,
 				A9CF7C92254207CE00133417 /* SceneDelegate.swift in Sources */,
 				A9CF7C9A254207CF00133417 /* MINRND.xcdatamodeld in Sources */,
